@@ -5,59 +5,59 @@ const dbConfig = defineConfig({
   /**
    * Default connection used for all queries.
    */
-  connection: 'sqlite',
+  connection: 'pg',
 
   connections: {
     /**
      * SQLite connection (default).
      */
-    sqlite: {
-      client: 'better-sqlite3',
+    //sqlite: {
+    //  client: 'better-sqlite3',
 
-      connection: {
+    //  connection: {
         /**
          * Database file location.
          */
-        filename: app.tmpPath('db.sqlite3'),
-      },
+    //    filename: app.tmpPath('db.sqlite3'),
+    //  },
 
       /**
        * Required by Knex for SQLite defaults.
        */
-      useNullAsDefault: true,
+    //  useNullAsDefault: true,
 
-      migrations: {
+    //  migrations: {
         /**
          * Sort migration files naturally by filename.
          */
-        naturalSort: true,
-
+    //    naturalSort: true,
+    //
         /**
-         * Paths containing migration files.
-         */
-        paths: ['database/migrations'],
-      },
-    },
+    //     * Paths containing migration files.
+    //     */
+    //    paths: ['database/migrations'],
+    //  },
+    // },
 
     /**
      * PostgreSQL connection.
      * Install package to switch: npm install pg
      */
-    // pg: {
-    //   client: 'pg',
-    //   connection: {
-    //     host: process.env.PG_HOST,
-    //     port: Number(process.env.PG_PORT || 5432),
-    //     user: process.env.PG_USER,
-    //     password: process.env.PG_PASSWORD,
-    //     database: process.env.PG_DB_NAME,
-    //   },
-    //   migrations: {
-    //     naturalSort: true,
-    //     paths: ['database/migrations'],
-    //   },
-    //   debug: app.inDev,
-    // },
+     pg: {
+       client: 'pg',
+       connection: {
+         host: process.env.PG_HOST,
+         port: Number(process.env.PG_PORT || 5435),
+         user: process.env.PG_USER,
+         password: process.env.PG_PASSWORD,
+         database: process.env.PG_DB_NAME,
+       },
+       migrations: {
+         naturalSort: true,
+         paths: ['database/migrations'],
+       },
+       debug: app.inDev,
+     },
 
     /**
      * MySQL / MariaDB connection.

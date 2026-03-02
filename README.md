@@ -10,7 +10,7 @@
 <br />
 <div align="center">
   <a href="https://github.com/niicolaas/Kiker-Best-Shop">
-    <img src="https://i.imgur.com/YpeaVTV.jpeg" alt="Logo" width="80" height="80">
+    <img src="https://i.imgur.com/YpeaVTV.jpeg" alt="Logo">
   </a>
 
 <h3 align="center">Kiker Shop Assistent</h3>

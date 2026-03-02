@@ -8,18 +8,20 @@ import { BaseModel, column } from '@adonisjs/lucid/orm'
 import { DateTime } from 'luxon'
 
 export class ProductSchema extends BaseModel {
-  static $columns = ['id', 'name', 'price', 'description', 'imgurl', 'createdAt', 'updatedAt'] as const
+  static $columns = ['id', 'name', 'price', 'description', 'imgurl', 'embedding', 'createdAt', 'updatedAt'] as const
   $columns = ProductSchema.$columns
   @column({ isPrimary: true })
   declare id: number
   @column()
-  declare name: string
+  declare name: string | null
   @column()
-  declare price: string
+  declare price: string | null
   @column()
   declare description: string | null
   @column()
   declare imgurl: string | null
+  @column()
+  declare embedding: any | null
   @column.dateTime({ autoCreate: true })
   declare createdAt: DateTime
   @column.dateTime({ autoCreate: true, autoUpdate: true })

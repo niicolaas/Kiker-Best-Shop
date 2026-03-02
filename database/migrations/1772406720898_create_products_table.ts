@@ -4,12 +4,16 @@ export default class extends BaseSchema {
   protected tableName = 'products'
 
   async up() {
+    await this.raw('CREATE EXTENSION IF NOT EXISTS vector;')
+
     this.schema.createTable(this.tableName, (table) => {
-      table.increments('id').primary()
-      table.string('name').notNullable()
-      table.decimal('price', 10, 2).notNullable()
-      table.text('description').nullable()
-      table.string('imgurl').nullable()
+      table.increments('id')
+      table.string('name')
+      table.decimal('price')
+      table.string('description')
+      table.string('imgurl')
+
+      table.specificType('embedding', 'vector(384)')
 
       table.timestamp('created_at', { useTz: true }).notNullable()
       table.timestamp('updated_at', { useTz: true }).notNullable()

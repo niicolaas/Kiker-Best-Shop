@@ -9,13 +9,16 @@ export default class Product extends BaseModel {
   declare name: string
 
   @column()
-  declare price: number
+  declare price: string
 
   @column()
   declare description: string
 
   @column()
   declare imgurl: string
+
+  @column()
+  declare embedding: string | null
 
   @column.dateTime({ autoCreate: true })
   declare createdAt: DateTime

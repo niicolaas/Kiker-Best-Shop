@@ -30,7 +30,7 @@
 
 ## About The Project
 
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
+[![Product Name Screen Shot][product-screenshot]](https://itsnotonlynow.com)
 
 Kiker-Best-Shop is an advanced e-commerce assistant application built with AdonisJS. It features a semantic search engine using PostgreSQL and pgvector to enable AI-powered product recommendations based on user intent rather than just keywords. The application utilizes Hugging Face to generate vector embeddings for products and OpenAI's GPT-4o-mini to provide conversational, context-aware answers to user queries regarding the product catalog.
     
@@ -40,6 +40,7 @@ Kiker-Best-Shop is an advanced e-commerce assistant application built with Adoni
 
 ## Languages & Frameworks
 
+* [![TypeScript][TypeScript.js]][TypeScript-url]
 * [![AdonisJS][Adonis.js]][Adonis-url]
 * [![React][React.js]][React-url]
 * [![Shadcn][Shad.cn]][Shadcn-url]
@@ -47,6 +48,7 @@ Kiker-Best-Shop is an advanced e-commerce assistant application built with Adoni
 ## Databases & Tools
 
 * [![Postgresql][Postgres.sql]][Postgres-url]
+* [![PGVector][PGVector.sql]][PGVector-url]
 * [![Lucid][Lucid.js]][Lucid-url]
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
@@ -65,14 +67,18 @@ Kiker-Best-Shop is an advanced e-commerce assistant application built with Adoni
 [linkedin-url]: https://linkedin.com/in/nicolas-gabriel-43395222b/
 [product-screenshot]: https://i.imgur.com/uIZmycS.png
 
+[TypeScript-url]: https://www.typescriptlang.org/
 [Adonis-url]: https://adonisjs.com/
 [React-url]: https://react.dev/
 [Shadcn-url]: https://ui.shadcn.com/
 [Postgres-url]: https://www.postgresql.org/
 [Lucid-url]: https://lucid.adonisjs.com/
+[PGVector-url]: https://github.com/pgvector/pgvector
 
+[TypeScript.js]: https://img.shields.io/badge/typescript-%23007ACC.svg?style=for-the-badge&logo=typescript&logoColor=white
 [Adonis.js]: https://img.shields.io/badge/adonisjs-%23220052.svg?style=for-the-badge&logo=adonisjs&logoColor=white
 [Postgres.sql]: https://img.shields.io/badge/Postgres-%23316192.svg?style=for-the-badge&logo=postgresql&logoColor=white
 [React.js]: https://img.shields.io/badge/React-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB
 [Shad.cn]: https://img.shields.io/badge/shadcn%2Fui-000?style=for-the-badge&logo=shadcnui&logoColor=fff
 [Lucid.js]: https://img.shields.io/badge/Lucid-DB-blue?style=for-the-badge
+[PGVector.sql]: https://img.shields.io/badge/PGVector-Vector-purple?style=for-the-badge

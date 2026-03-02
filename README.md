@@ -10,7 +10,7 @@
 <br />
 <div align="center">
   <a href="https://github.com/niicolaas/Kiker-Best-Shop">
-    <img src="images/logo.png" alt="Logo" width="80" height="80">
+    <img src="https://i.imgur.com/YpeaVTV.jpeg" alt="Logo" width="80" height="80">
   </a>
 
 <h3 align="center">Kiker Shop Assistent</h3>
@@ -55,15 +55,15 @@ Kiker-Best-Shop is an advanced e-commerce assistant application built with Adoni
 [contributors-url]: https://github.com/niicolaas/Kiker-Best-Shop/graphs/contributors
 [forks-shield]: https://img.shields.io/github/forks/niicolaas/Kiker-Best-Shop.svg?style=for-the-badge
 [forks-url]: https://github.com/niicolaas/Kiker-Best-Shop/network/members
-[stars-shield]: https://img.shields.io/github/stars/github_username/repo_name.svg?style=for-the-badge
+[stars-shield]: https://img.shields.io/github/stars/niicolaas/Kiker-Best-Shop.svg?style=for-the-badge
 [stars-url]: https://github.com/niicolaas/Kiker-Best-Shop/stargazers
-[issues-shield]: https://img.shields.io/github/issues/github_username/repo_name.svg?style=for-the-badge
+[issues-shield]: https://img.shields.io/github/issues/niicolaas/Kiker-Best-Shop.svg?style=for-the-badge
 [issues-url]: https://github.com/niicolaas/Kiker-Best-Shop/issues
-[license-shield]: https://img.shields.io/github/license/github_username/repo_name.svg?style=for-the-badge
-[license-url]: https://github.com/github_username/repo_name/blob/master/LICENSE.txt
+[license-shield]: https://img.shields.io/github/license/niicolaas/Kiker-Best-Shop.svg?style=for-the-badge
+[license-url]: https://github.com/niicolaas/Kiker-Best-Shop/blob/master/LICENSE.txt
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://linkedin.com/in/nicolas-gabriel-43395222b/
-[product-screenshot]: images/screenshot.png
+[product-screenshot]: https://i.imgur.com/uIZmycS.png
 
 [Adonis-url]: https://adonisjs.com/
 [React-url]: https://react.dev/

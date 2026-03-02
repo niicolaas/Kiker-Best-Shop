@@ -1,6 +1,6 @@
 import { BaseCommand } from '@adonisjs/core/ace'
 import Product from '#models/product'
-import AiService from '#services/aiService'
+import AiService from '#services/huggingFaceService'
 import { inject } from '@adonisjs/core'
 import { CommandOptions } from '@adonisjs/core/types/ace'
 

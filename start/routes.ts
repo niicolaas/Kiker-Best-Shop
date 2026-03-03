@@ -11,6 +11,9 @@ import { middleware } from '#start/kernel'
 import { controllers } from '#generated/controllers'
 import router from '@adonisjs/core/services/router'
 
+// Lazy loading (Better Performance)
+const AIController = () => import('#controllers/AIController')
+
 router.on('/').renderInertia('home', {}).as('home')
 
 router
@@ -22,6 +25,10 @@ router
     router.post('login', [controllers.Session, 'store'])
   })
   .use(middleware.guest())
+
+router.group(() => {
+  router.post('/chat', [AIController, 'chat'])
+})
 
 router
   .group(() => {

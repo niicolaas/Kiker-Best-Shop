@@ -21,21 +21,24 @@ export default class SeedProducts extends BaseCommand {
     const productsToSeed = [
       {
         name: 'Tênis Running Pro Max',
-        price: '429.90',
+        price: 429.9,
         description: 'Melhor custo-benefício para corridas leves e alto amortecimento.',
-        imgurl: '/images/running.png',
+        imgurl:
+          'https://encrypted-tbn1.gstatic.com/shopping?q=tbn:ANd9GcSvUmjr6L0dgDbIo1xanTq0JoWXMNiqn7v4c_kyKcf1nFB9q0_c75DSRiV-rZLB53_fHj1Vvm8xnctNKP0ySJa1k5JcUSAxSE14Gnn1tN0YgWYwKA3pZjMHgg',
       },
       {
         name: 'Bota Adventure X',
-        price: '580.00',
+        price: 580.0,
         description: 'Resistente a água, ideal para trilhas pesadas e terrenos rochosos.',
-        imgurl: '/images/bota.png',
+        imgurl:
+          'https://encrypted-tbn1.gstatic.com/shopping?q=tbn:ANd9GcSvUmjr6L0dgDbIo1xanTq0JoWXMNiqn7v4c_kyKcf1nFB9q0_c75DSRiV-rZLB53_fHj1Vvm8xnctNKP0ySJa1k5JcUSAxSE14Gnn1tN0YgWYwKA3pZjMHgg',
       },
       {
         name: 'Tênis Street Comfort Plus',
-        price: '299.00',
+        price: 299.0,
         description: 'Estilo urbano com palmilha de gel para o dia a dia.',
-        imgurl: '/images/street.png',
+        imgurl:
+          'https://encrypted-tbn1.gstatic.com/shopping?q=tbn:ANd9GcSvUmjr6L0dgDbIo1xanTq0JoWXMNiqn7v4c_kyKcf1nFB9q0_c75DSRiV-rZLB53_fHj1Vvm8xnctNKP0ySJa1k5JcUSAxSE14Gnn1tN0YgWYwKA3pZjMHgg',
       },
     ]
 

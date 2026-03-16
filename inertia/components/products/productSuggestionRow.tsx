@@ -1,4 +1,4 @@
-import { BrainCircuit } from "lucide-react"
+import { BrainCircuit } from 'lucide-react'
 
 type ProductSuggestion = {
   name: string
@@ -13,6 +13,10 @@ type ProductSuggestionsRowProps = {
 }
 
 export function ProductSuggestionsRow({ products }: ProductSuggestionsRowProps) {
+  const sortedProducts = [...products].sort((a, b) => {
+    return (b.similarity ?? 0) - (a.similarity ?? 0)
+  })
+
   const formatPrice = (price: string) => {
     const value = Number(price)
 
@@ -20,14 +24,14 @@ export function ProductSuggestionsRow({ products }: ProductSuggestionsRowProps) 
       return price
     }
 
-    return value.toLocaleString("pt-BR", {
-      style: "currency",
-      currency: "BRL",
+    return value.toLocaleString('pt-BR', {
+      style: 'currency',
+      currency: 'BRL',
     })
   }
 
   const getRelevance = (product: ProductSuggestion) => {
-    if (typeof product.similarity === "number") {
+    if (typeof product.similarity === 'number') {
       return Math.round(product.similarity * 100)
     }
 
@@ -48,8 +52,9 @@ export function ProductSuggestionsRow({ products }: ProductSuggestionsRowProps) 
       </p>
 
       <div className="flex gap-3 overflow-x-auto pb-1">
-        {products.map((product, index) => {
+        {sortedProducts.map((product, index) => {
           const relevance = getRelevance(product)
+          const rank = index + 1
 
           return (
             <div
@@ -57,20 +62,14 @@ export function ProductSuggestionsRow({ products }: ProductSuggestionsRowProps) 
               className="flex w-72 shrink-0 items-center gap-3 rounded-xl border border-gray-700 bg-gray-800 px-3 py-3 shadow-sm"
             >
               <div className="h-16 w-16 rounded-lg bg-gray-900 border border-gray-700 flex items-center justify-center text-gray-400 text-[11px]">
-                IMG
+                <img src={product.imgurl} alt="" />
               </div>
 
               <div className="flex-1 space-y-1">
-                <p className="text-sm font-semibold text-gray-100 line-clamp-2">
-                  {product.name}
-                </p>
-                <p className="text-xs font-medium text-purple-300">
-                  {formatPrice(product.price)}
-                </p>
+                <p className="text-sm font-semibold text-gray-100 line-clamp-2">{product.name}</p>
+                <p className="text-xs font-medium text-purple-300">{formatPrice(product.price)}</p>
                 {product.description && (
-                  <p className="text-[11px] text-gray-300 line-clamp-2">
-                    {product.description}
-                  </p>
+                  <p className="text-[11px] text-gray-300 line-clamp-2">{product.description}</p>
                 )}
 
                 <div className="flex items-center justify-between mt-1">
@@ -79,9 +78,7 @@ export function ProductSuggestionsRow({ products }: ProductSuggestionsRowProps) 
                       Relevância: {relevance}%
                     </span>
                   )}
-                  <span className="text-[10px] text-gray-400 ml-auto">
-                    Rank RAG · Top 3
-                  </span>
+                  <span className="text-[10px] text-gray-400 ml-auto">Rank RAG · Top #{rank}</span>
                 </div>
               </div>
             </div>

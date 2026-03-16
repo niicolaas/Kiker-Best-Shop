@@ -11,9 +11,12 @@ export default class ProductService {
   ) {}
 
   async executeAssistent(question: string) {
+    // Generate the query
     const queryVector = await this.huggingFaceService.generateEmbedding(question)
+    // Transform the query in to a JSON STRING
     const vectorString = JSON.stringify(queryVector)
 
+    // Search the related products
     const relatedProducts = await db.rawQuery(
       `
       SELECT name, description, price, imgurl, 1 - (embedding <=> ?::vector) AS similarity
@@ -25,7 +28,15 @@ export default class ProductService {
       [vectorString, vectorString, vectorString]
     )
 
-    const context = relatedProducts.rows
+    interface ProductQueryResult {
+      name: string
+      description: string
+      price: number
+      imgurl: string
+      similarity: number
+    }
+
+    const context = (relatedProducts.rows as ProductQueryResult[])
       .map((p: any) => `Producto: ${p.name} | Preço: ${p.price} | Descrição: ${p.description}`)
       .join('\n')
 

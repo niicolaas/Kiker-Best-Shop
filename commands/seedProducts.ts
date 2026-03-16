@@ -22,7 +22,8 @@ export default class SeedProducts extends BaseCommand {
       {
         name: 'Tênis Running Pro Max',
         price: 429.9,
-        description: 'Melhor custo-benefício para corridas leves e alto amortecimento.',
+        description:
+          'Tênis de alta performance específico para corrida de rua, maratonas e exercícios aeróbicos. Possui amortecimento para corredores.',
         imgurl:
           'https://encrypted-tbn1.gstatic.com/shopping?q=tbn:ANd9GcSvUmjr6L0dgDbIo1xanTq0JoWXMNiqn7v4c_kyKcf1nFB9q0_c75DSRiV-rZLB53_fHj1Vvm8xnctNKP0ySJa1k5JcUSAxSE14Gnn1tN0YgWYwKA3pZjMHgg',
       },

@@ -7,6 +7,23 @@
 import { BaseModel, column } from '@adonisjs/lucid/orm'
 import { DateTime } from 'luxon'
 
+export class CartitemSchema extends BaseModel {
+  static $columns = ['id', 'userId', 'productId', 'amount', 'createdAt', 'updatedAt'] as const
+  $columns = CartitemSchema.$columns
+  @column({ isPrimary: true })
+  declare id: number
+  @column()
+  declare userId: number
+  @column()
+  declare productId: number
+  @column()
+  declare amount: number
+  @column.dateTime({ autoCreate: true })
+  declare createdAt: DateTime | null
+  @column.dateTime({ autoCreate: true, autoUpdate: true })
+  declare updatedAt: DateTime | null
+}
+
 export class ProductSchema extends BaseModel {
   static $columns = ['id', 'name', 'price', 'description', 'imgurl', 'embedding', 'createdAt', 'updatedAt'] as const
   $columns = ProductSchema.$columns
@@ -28,6 +45,19 @@ export class ProductSchema extends BaseModel {
   declare updatedAt: DateTime
 }
 
+export class RoleSchema extends BaseModel {
+  static $columns = ['id', 'name', 'createdAt', 'updatedAt'] as const
+  $columns = RoleSchema.$columns
+  @column({ isPrimary: true })
+  declare id: number
+  @column()
+  declare name: string
+  @column.dateTime({ autoCreate: true })
+  declare createdAt: DateTime | null
+  @column.dateTime({ autoCreate: true, autoUpdate: true })
+  declare updatedAt: DateTime | null
+}
+
 export class UserSchema extends BaseModel {
   static $columns = ['id', 'fullName', 'email', 'password', 'createdAt', 'updatedAt'] as const
   $columns = UserSchema.$columns
@@ -40,7 +70,7 @@ export class UserSchema extends BaseModel {
   @column({ serializeAs: null })
   declare password: string
   @column.dateTime({ autoCreate: true })
-  declare createdAt: DateTime
+  declare createdAt: DateTime | null
   @column.dateTime({ autoCreate: true, autoUpdate: true })
   declare updatedAt: DateTime | null
 }

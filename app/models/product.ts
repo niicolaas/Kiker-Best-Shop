@@ -9,7 +9,7 @@ export default class Product extends BaseModel {
   declare name: string
 
   @column()
-  declare price: string
+  declare price: number
 
   @column()
   declare description: string

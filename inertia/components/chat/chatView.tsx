@@ -1,11 +1,11 @@
-import { useEffect, useState } from "react"
-import { Send, Settings2 } from "lucide-react"
-import { ProductSuggestionsRow } from "../products/productSuggestionRow"
-import { Button } from "../ui/button"
-import { ChatMessageAI } from "./chatMessageAI"
-import { ChatMessageUser } from "./chatMessageUser"
+import { useEffect, useState } from 'react'
+import { Mic, Send, Settings2 } from 'lucide-react'
+import { ProductSuggestionsRow } from '../products/productSuggestionRow'
+import { Button } from '../ui/button'
+import { ChatMessageAI } from './chatMessageAI'
+import { ChatMessageUser } from './chatMessageUser'
 
-type ChatRole = "user" | "assistant"
+type ChatRole = 'user' | 'assistant'
 
 type ChatMessage = {
   id: string
@@ -20,15 +20,15 @@ type ChatMessage = {
   }[]
 }
 
-const STORAGE_KEY = "rag_chat_conversation"
+const STORAGE_KEY = 'rag_chat_conversation'
 
 export function RAGChatView() {
   const [messages, setMessages] = useState<ChatMessage[]>([])
-  const [input, setInput] = useState("")
+  const [input, setInput] = useState('')
   const [isLoading, setIsLoading] = useState(false)
 
   useEffect(() => {
-    if (typeof window === "undefined") return
+    if (typeof window === 'undefined') return
 
     const stored = window.localStorage.getItem(STORAGE_KEY)
 
@@ -46,16 +46,16 @@ export function RAGChatView() {
 
     const welcomeMessage: ChatMessage = {
       id: crypto.randomUUID(),
-      role: "assistant",
+      role: 'assistant',
       content:
-        "Olá! Eu sou o assistente de vendas da Kiker. Em que posso te ajudar hoje com seus produtos ou catálogo?",
+        'Olá! Eu sou o assistente de vendas da Kiker. Em que posso te ajudar hoje com seus produtos ou catálogo?',
     }
 
     setMessages([welcomeMessage])
   }, [])
 
   useEffect(() => {
-    if (typeof window === "undefined") return
+    if (typeof window === 'undefined') return
     if (!messages.length) return
 
     window.localStorage.setItem(STORAGE_KEY, JSON.stringify(messages))
@@ -67,35 +67,35 @@ export function RAGChatView() {
 
     const userMessage: ChatMessage = {
       id: crypto.randomUUID(),
-      role: "user",
+      role: 'user',
       content: question,
     }
 
     setMessages((prev) => [...prev, userMessage])
-    setInput("")
+    setInput('')
     setIsLoading(true)
 
     try {
-      const response = await fetch("http://localhost:3333/chat", {
-        method: "POST",
+      const response = await fetch('http://localhost:3333/chat', {
+        method: 'POST',
         headers: {
-          "Content-Type": "application/json",
+          'Content-Type': 'application/json',
         },
         body: JSON.stringify({ question }),
       })
 
       if (!response.ok) {
-        throw new Error("Erro ao se comunicar com o assistente.")
+        throw new Error('Erro ao se comunicar com o assistente.')
       }
 
       const data = await response.json()
 
       const assistantMessage: ChatMessage = {
         id: crypto.randomUUID(),
-        role: "assistant",
+        role: 'assistant',
         content:
           data?.answer ??
-          "Tive um problema para entender a resposta da API. Tente novamente em alguns instantes.",
+          'Tive um problema para entender a resposta da API. Tente novamente em alguns instantes.',
         products: Array.isArray(data?.products) ? data.products : undefined,
       }
 
@@ -103,9 +103,9 @@ export function RAGChatView() {
     } catch (error) {
       const assistantMessage: ChatMessage = {
         id: crypto.randomUUID(),
-        role: "assistant",
+        role: 'assistant',
         content:
-          "Não consegui falar com o assistente agora. Verifique se a API em `localhost:3333/chat` está rodando e tente novamente.",
+          'Não consegui falar com o assistente agora. Verifique se a API em `localhost:3333/chat` está rodando e tente novamente.',
       }
 
       setMessages((prev) => [...prev, assistantMessage])
@@ -115,7 +115,7 @@ export function RAGChatView() {
   }
 
   const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
-    if (event.key === "Enter" && !event.shiftKey) {
+    if (event.key === 'Enter' && !event.shiftKey) {
       event.preventDefault()
       sendMessage()
     }
@@ -128,7 +128,7 @@ export function RAGChatView() {
           <div className="w-full space-y-4">
             {messages.map((message) => (
               <div key={message.id} className="space-y-2">
-                {message.role === "user" ? (
+                {message.role === 'user' ? (
                   <ChatMessageUser content={message.content} />
                 ) : (
                   <>
@@ -189,7 +189,18 @@ export function RAGChatView() {
             <Button
               type="button"
               size="icon"
-              className="h-9 w-9 rounded-full bg-gray-700 hover:bg-gray-600 text-white shadow disabled:opacity-60 disabled:cursor-not-allowed"
+              className="h-9 w-9 rounded-full bg-gray-700 hover:bg-purple-800 text-white shadow disabled:opacity-60 disabled:cursor-not-allowed"
+              onClick={sendMessage}
+              disabled={isLoading || !input.trim()}
+            >
+              <Mic className="h-4 w-4" />
+              <span className="sr-only">Enviar mensagem de voz</span>
+            </Button>
+
+            <Button
+              type="button"
+              size="icon"
+              className="h-9 w-9 rounded-full bg-gray-700 hover:bg-purple-600 text-white shadow disabled:opacity-60 disabled:cursor-not-allowed"
               onClick={sendMessage}
               disabled={isLoading || !input.trim()}
             >

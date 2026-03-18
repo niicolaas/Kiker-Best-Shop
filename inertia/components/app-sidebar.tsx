@@ -1,4 +1,4 @@
-import { ShoppingBagIcon, Home, Settings, Search } from 'lucide-react'
+import { ShoppingBagIcon, Home, Settings, Search, ShoppingCart } from 'lucide-react'
 import {
   Sidebar,
   SidebarContent,
@@ -13,6 +13,7 @@ import {
 // Itens do Menu
 const items = [
   { title: 'Painel', url: '#', icon: Home },
+  { title: 'Meu carrinho', url: '#', icon: ShoppingCart },
   { title: 'Produtos', url: '#', icon: ShoppingBagIcon },
   { title: 'Logs de Busca Vetorial', url: '#', icon: Search },
   { title: 'Configurações de IA', url: '#', icon: Settings },

@@ -1,3 +1,4 @@
+import env from '#start/env'
 import app from '@adonisjs/core/services/app'
 import { defineConfig } from '@adonisjs/lucid'
 
@@ -15,24 +16,24 @@ const dbConfig = defineConfig({
     //  client: 'better-sqlite3',
 
     //  connection: {
-        /**
-         * Database file location.
-         */
+    /**
+     * Database file location.
+     */
     //    filename: app.tmpPath('db.sqlite3'),
     //  },
 
-      /**
-       * Required by Knex for SQLite defaults.
-       */
+    /**
+     * Required by Knex for SQLite defaults.
+     */
     //  useNullAsDefault: true,
 
     //  migrations: {
-        /**
-         * Sort migration files naturally by filename.
-         */
+    /**
+     * Sort migration files naturally by filename.
+     */
     //    naturalSort: true,
     //
-        /**
+    /**
     //     * Paths containing migration files.
     //     */
     //    paths: ['database/migrations'],
@@ -43,21 +44,21 @@ const dbConfig = defineConfig({
      * PostgreSQL connection.
      * Install package to switch: npm install pg
      */
-     pg: {
-       client: 'pg',
-       connection: {
-         host: process.env.PG_HOST,
-         port: Number(process.env.PG_PORT || 5435),
-         user: process.env.PG_USER,
-         password: process.env.PG_PASSWORD,
-         database: process.env.PG_DB_NAME,
-       },
-       migrations: {
-         naturalSort: true,
-         paths: ['database/migrations'],
-       },
-       debug: app.inDev,
-     },
+    pg: {
+      client: 'pg',
+      connection: {
+        host: env.get('PG_HOST'),
+        port: Number(env.get('PG_PORT') || 5435),
+        user: env.get('PG_USER'),
+        password: env.get('PG_PASSWORD'),
+        database: env.get('PG_DATABASE'),
+      },
+      migrations: {
+        naturalSort: true,
+        paths: ['database/migrations'],
+      },
+      debug: app.inDev,
+    },
 
     /**
      * MySQL / MariaDB connection.

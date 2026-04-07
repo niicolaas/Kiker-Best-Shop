@@ -8,7 +8,7 @@ import { createInertiaApp } from '@inertiajs/react'
 import { TuyauProvider } from '@adonisjs/inertia/react'
 import { resolvePageComponent } from '@adonisjs/inertia/helpers'
 
-const appName = import.meta.env.VITE_APP_NAME || 'AdonisJS'
+const appName = import.meta.env.VITE_APP_NAME || 'Kiker Shop RAG'
 
 createInertiaApp({
   title: (title) => (title ? `${title} - ${appName}` : appName),
@@ -22,6 +22,7 @@ createInertiaApp({
   setup({ el, App, props }) {
     createRoot(el).render(
       <TuyauProvider client={client}>
+        <link rel="icon" type="image/svg+xml" href="https://i.imgur.com/p3yx20n.png" />
         <App {...props} />
       </TuyauProvider>
     )

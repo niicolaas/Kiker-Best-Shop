@@ -1,12 +1,43 @@
-import { useState } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 import { BrainCircuit, Database, ListTree, Settings2, ShoppingCart } from 'lucide-react'
 import { SidebarItem } from '@/components/sidebar/sideBarItem'
 import { RAGChatView } from '@/components/chat/chatView'
+import Product from '#models/product'
 
 export default function Home() {
   const [activeView, setActiveView] = useState<
     'rag' | 'mycart' | 'knowledge' | 'logs' | 'settings'
   >('rag')
+
+  const [isLoading, setIsLoading] = useState(false)
+  const [products, setProducts] = useState<Product[]>([])
+
+  const fetchProduct = useCallback(async () => {
+    console.log('test')
+    setIsLoading(true)
+    try {
+      const response = await fetch('/findProducts', {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      })
+
+      if (!response.ok) throw new Error('Failed to fetch products')
+
+      const data = await response.json()
+
+      setProducts(Array.isArray(data?.products) ? data.products : [])
+    } catch (error) {
+      console.error('Error fetching products:', error)
+    } finally {
+      setIsLoading(false)
+    }
+  }, [])
+
+  useEffect(() => {
+    fetchProduct()
+  }, [fetchProduct])
 
   const viewConfig: Record<
     'rag' | 'mycart' | 'knowledge' | 'logs' | 'settings',
@@ -91,7 +122,7 @@ export default function Home() {
           <div className="px-4 pb-5 pt-2">
             <div className="rounded-xl border border-purple-100 bg-purple-50/80 px-4 py-3">
               <p className="text-xs font-medium text-purple-900">Catálogo Vetorizado</p>
-              <p className="mt-1 text-lg font-semibold text-purple-700">1.245 itens</p>
+              <p className="mt-1 text-lg font-semibold text-purple-700">{products.length} itens</p>
               <p className="mt-1 text-[11px] text-purple-700/80">Atualizado há 5 minutos</p>
             </div>
           </div>
